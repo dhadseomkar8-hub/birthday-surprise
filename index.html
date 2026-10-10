@@ -1,0 +1,320 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Little Surprise 💗</title>
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  padding: 24px 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+  background: linear-gradient(145deg, #200d32, #642b59, #30142f);
+  color: #fff7fb;
+  font-family: Georgia, serif;
+  text-align: center;
+}
+
+.heart {
+  position: fixed;
+  bottom: -30px;
+  color: #ffafd0;
+  opacity: .65;
+  pointer-events: none;
+  animation: floatUp 9s linear infinite;
+}
+
+@keyframes floatUp {
+  from { transform: translateY(0) rotate(0); }
+  to { transform: translateY(-115vh) rotate(35deg); }
+}
+
+.container {
+  width: 100%;
+  max-width: 390px;
+  position: relative;
+  z-index: 1;
+}
+
+h1 {
+  color: #ffc0dc;
+  font-size: clamp(27px, 8vw, 36px);
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  color: #ffe0ed;
+  line-height: 1.7;
+}
+
+.envelope {
+  position: relative;
+  width: 240px;
+  height: 155px;
+  margin: 45px auto 30px;
+  cursor: pointer;
+  perspective: 700px;
+}
+
+.envelope-back {
+  position: absolute;
+  inset: 0;
+  border-radius: 8px;
+  background: #f58bb4;
+  box-shadow: 0 10px 35px #ff78b344;
+}
+
+.envelope-front {
+  position: absolute;
+  inset: 0;
+  background: #ffb5d0;
+  clip-path: polygon(0 0, 50% 55%, 100% 0, 100% 100%, 0 100%);
+  border-radius: 8px;
+}
+
+.flap {
+  position: absolute;
+  inset: 0;
+  background: #ffd0e2;
+  clip-path: polygon(0 0, 100% 0, 50% 57%);
+  transform-origin: top;
+  transition: transform .8s ease;
+  z-index: 3;
+}
+
+.seal {
+  position: absolute;
+  left: 50%;
+  top: 53%;
+  transform: translate(-50%, -50%);
+  font-size: 35px;
+  z-index: 4;
+  transition: opacity .3s;
+}
+
+.envelope.open .flap {
+  transform: rotateX(180deg);
+}
+
+.envelope.open .seal {
+  opacity: 0;
+}
+
+.tap {
+  font-size: 14px;
+  color: #ffd6e8;
+}
+
+button {
+  border: 0;
+  border-radius: 30px;
+  padding: 13px 20px;
+  margin: 8px 4px;
+  background: #ffb5d0;
+  color: #501b3c;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:active { transform: scale(.97); }
+
+#letter {
+  display: none;
+  margin-top: 28px;
+  padding: 23px 18px;
+  border: 1px solid #ffffff35;
+  border-radius: 20px;
+  background: #fff0f6;
+  color: #592747;
+  box-shadow: 0 12px 40px #10071b55;
+  animation: appear .8s ease;
+}
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+#letter h2 {
+  color: #c43f79;
+  font-size: 27px;
+}
+
+#letter p {
+  line-height: 1.85;
+  font-size: 16px;
+}
+
+.photo {
+  display: block;
+  width: 100%;
+  max-height: 340px;
+  object-fit: cover;
+  border-radius: 14px;
+  margin: 18px auto;
+}
+
+.signature {
+  color: #c43f79;
+  font-style: italic;
+}
+
+.music-note {
+  color: #ffe0ed;
+  font-size: 13px;
+}
+
+.footer {
+  margin-top: 26px;
+  color: #f9c5dd;
+  font-size: 13px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+}
+</style>
+</head>
+
+<body>
+<main class="container">
+
+  <h1>A Little Surprise 💗</h1>
+
+  <p class="subtitle">
+    Someone has made something special just for you... ✨
+  </p>
+
+  <div class="envelope" id="envelope"
+       role="button" tabindex="0"
+       aria-label="Open your birthday letter">
+    <div class="envelope-back"></div>
+    <div class="flap"></div>
+    <div class="envelope-front"></div>
+    <div class="seal">💌</div>
+  </div>
+
+  <p class="tap" id="tapText">♡ Tap the envelope to open ♡</p>
+
+  <section id="letter">
+    <h2>Happy Birthday! 🎂</h2>
+
+    <p>Hey, you! 💗</p>
+
+    <p>
+      Today is your special day, and I wanted to make
+      you smile in my own little way.
+    </p>
+
+    <p>
+      I hope your life is filled with happiness,
+      beautiful memories, unexpected blessings,
+      and a thousand reasons to smile.
+    </p>
+
+    <p>
+      You have a special place in my thoughts,
+      and I'm genuinely glad I got to know you.
+      Never stop being the wonderful person you are. ✨
+    </p>
+
+    <img class="photo" src="photo.jpg"
+         alt="A special birthday memory"
+         onerror="this.style.display='none'">
+
+    <p>
+      May this new chapter bring you everything
+      your heart wishes for. Keep smiling! 🌷
+    </p>
+
+    <p class="signature">
+      Made with a little extra love ♡
+    </p>
+  </section>
+
+  <div>
+    <button id="musicButton" type="button">
+      🎵 Play Music
+    </button>
+  </div>
+
+  <p class="music-note">
+    Tap play for a little birthday soundtrack 🎶
+  </p>
+
+  <audio id="music" src="song.mp3" loop preload="none"></audio>
+
+  <p class="footer">A little surprise, just for you 💕</p>
+
+</main>
+
+<script>
+const envelope = document.getElementById("envelope");
+const letter = document.getElementById("letter");
+const tapText = document.getElementById("tapText");
+const music = document.getElementById("music");
+const musicButton = document.getElementById("musicButton");
+
+function openLetter() {
+  if (letter.style.display === "block") return;
+
+  envelope.classList.add("open");
+  letter.style.display = "block";
+  tapText.textContent = "♡ A little message from the heart ♡";
+
+  setTimeout(() => {
+    letter.scrollIntoView({
+      behavior: "smooth",
+      block: "nearest"
+    });
+  }, 150);
+}
+
+envelope.addEventListener("click", openLetter);
+
+envelope.addEventListener("keydown", (event) => {
+  if (event.key === "Enter" || event.key === " ") {
+    event.preventDefault();
+    openLetter();
+  }
+});
+
+musicButton.addEventListener("click", async () => {
+  if (music.paused) {
+    try {
+      await music.play();
+      musicButton.textContent = "⏸ Pause Music";
+    } catch (error) {
+      alert("Please upload a valid song.mp3 audio file.");
+    }
+  } else {
+    music.pause();
+    musicButton.textContent = "🎵 Play Music";
+  }
+});
+
+for (let i = 0; i < 12; i++) {
+  const heart = document.createElement("span");
+  heart.className = "heart";
+  heart.textContent = i % 2 ? "♡" : "♥";
+  heart.style.left = (i * 8 + 2) + "%";
+  heart.style.animationDelay = (i * .7) + "s";
+  heart.style.animationDuration = (7 + i % 5) + "s";
+  heart.style.fontSize = (14 + i % 4 * 5) + "px";
+  document.body.appendChild(heart);
+}
+</script>
+</body>
+</html>
